@@ -23,7 +23,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-w", "--weight", help="weight file directory",
                     type=str, default="CRNN--17--0.0173--0.9746.hdf5")
 parser.add_argument("-t", "--test_img", help="Test image directory",
-                    type=str, default="E:/License Plate/CRNN/test/")
+                    type=str, default="E:/git repos/CRNN-Keras/test/")
 args = parser.parse_args()
 
 # Get CRNN model
