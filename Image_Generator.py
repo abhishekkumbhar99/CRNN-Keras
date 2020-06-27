@@ -93,7 +93,7 @@ class TextImageGenerator(keras.utils.Sequence):
 
     def __generate_data(self, batch_filenames):
 
-        X_data = np.ones([self.batch_size, self.img_w, self.img_h, 1])    # (bs, 128, 64, 1)
+        X_data = np.ones([self.batch_size, self.img_w, self.img_h, 1])    # (bs, 200, 40, 1)
         Y_data = np.ones([self.batch_size, self.max_text_len])            # (bs, 10)
         input_length = np.zeros((self.batch_size, 1))                       # (bs, 1)
         label_length = np.zeros((self.batch_size, 1))           # (bs, 1)
@@ -117,7 +117,7 @@ class TextImageGenerator(keras.utils.Sequence):
 
         # Copy in dict form
         inputs = {
-            'the_input': X_data,  # (bs, 128, 64, 1)
+            'the_input': X_data,  # (bs, 200, 40, 1)
             'the_labels': Y_data,  # (bs, 10)
             'input_length': input_length,  # (bs, 1)
             'label_length': label_length  # (bs, 1) 
@@ -125,28 +125,4 @@ class TextImageGenerator(keras.utils.Sequence):
         outputs = {'ctc': np.zeros([self.batch_size])}   # (bs, 1) 
         return (inputs, outputs)
 
-# train_file_path = 'E:/License Plate/CRNN/test/'
-
-# gen = TextImageGenerator(train_file_path, img_w, img_h, 100, downsample_factor, shuffle=True,augment=True)
-
-# ct=0
-# for j in range(5):
-#     for i,(img,lab) in enumerate(zip(gen[j][0]['the_input'],gen[j][0]['the_labels'])):
-#         ct+=1
-#         print(img.shape)
-
-#         lab = labels_to_text(lab)
-#         print(lab)
-
-#         cv2.imshow(lab, img.squeeze().T)
-#         cv2.waitKey(0)
-#         cv2.imwrite('test/'+lab+'_1'+'.png', 255*img.squeeze().T)
-
-#         if ct==100:
-#             exit()
-        
-
-
-
-# print('------------------------------------------------------')
 
